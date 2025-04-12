@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>RL Tracker</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <style>
+        .spinOnce {
+            -webkit-animation:spin 0.65s linear;
+            -moz-animation:spin 0.65s linear;
+            animation:spin 0.65s linear;
+        }
+        @-moz-keyframes spinOnce { 100% { -moz-transform: rotate(360deg); } }
+        @-webkit-keyframes spinOnce { 100% { -webkit-transform: rotate(360deg); } }
+        @keyframes spinOnce { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+    </style>
+    <script src="https://kit.fontawesome.com/2a85839126.js" crossorigin="anonymous"></script>
+</head>
+
+<body class="bg-dark">
+
+    <div class="container">
+        <div class="row">
+            <h1 class="text-center text-primary fw-bold mt-3">ROCKET LEAGUE TRACKER</h1>
+            <hr class="text-white mb-2">
+        </div>
+        <div class="row px-2">
+            <div class="col-10">
+                <div id="playerName" class="h4 text-info">Player Name</div>
+                <i class="text-light">Last Updated: </i><i id="lastUpdated" class="text-light">00/00/00, 00:00 AM</i>
+            </div>
+            <div class="col-2">
+                <a id="refresh" class="btn btn-outline-secondary mt-2" href="" onclick="">
+                    <i id="refreshSpinner" class="fa-sharp fa-solid fa-rotate-right text-light"></i>
+                </a>
+            </div>
+            <ul class="list-group col-12 mt-2 p-0">
+                <li class="list-group-item bg-dark text-light fs-5 fw-bold text-nowrap">
+                    <div class="row px-2">
+                        <div class="col-6 p-0">
+                            Ranked 3v3
+                        </div>
+                        <div class="col-3 text-end p-0">
+                            <img id="3sRatingIcon" class="img-fluid col-4" src="https://trackercdn.com/cdn/tracker.gg/rocket-league/ranks/s4-0.png">
+                            <span id="3sTierDiv" class="fs-6 text-warning me-1">0-0</span>
+                        </div>
+                        <div class="col-3 text-end p-0">
+                            <span id="3sMMR" class="badge bg-secondary">
+                                0000
+                            </span>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item bg-dark text-light fs-5 fw-bold text-nowrap">
+                    <div class="row px-2">
+                        <div class="col-6 p-0">
+                            Ranked 2v2
+                        </div>
+                        <div class="col-3 text-end p-0">
+                            <img id="2sRatingIcon" class="img-fluid col-4" src="https://trackercdn.com/cdn/tracker.gg/rocket-league/ranks/s4-0.png">
+                            <span id="2sTierDiv" class="fs-6 text-warning me-1">0-0</span>
+                        </div>
+                        <div class="col-3 text-end p-0">
+                            <span id="2sMMR" class="badge bg-secondary">
+                                0000
+                            </span>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item bg-dark text-light fs-5 fw-bold text-nowrap">
+                    <div class="row px-2">
+                        <div class="col-6 p-0">
+                            Ranked 1v1
+                        </div>
+                        <div class="col-3 text-end p-0">
+                            <img id="1sRatingIcon" class="img-fluid col-4" src="https://trackercdn.com/cdn/tracker.gg/rocket-league/ranks/s4-0.png">
+                            <span id="1sTierDiv" class="fs-6 text-warning me-1">0-0</span>
+                        </div>
+                        <div class="col-3 text-end p-0">
+                            <span id="1sMMR" class="badge bg-secondary">
+                                0000
+                            </span>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item bg-dark text-light fs-5 fw-bold text-nowrap">
+                    <div class="row px-2">
+                        <div class="col-6 p-0">
+                            Rumble
+                        </div>
+                        <div class="col-3 text-end p-0">
+                            <img id="RumbleRatingIcon" class="img-fluid col-4" src="https://trackercdn.com/cdn/tracker.gg/rocket-league/ranks/s4-0.png">
+                            <span id="RumbleTierDiv" class="fs-6 text-warning me-1">0-0</span>
+                        </div>
+                        <div class="col-3 text-end p-0">
+                            <span id="RumbleMMR" class="badge bg-secondary">
+                                0000
+                            </span>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item bg-dark text-light fs-5 fw-bold text-nowrap">
+                    <div class="row px-2">
+                        <div class="col-6 p-0">
+                            Hoops
+                        </div>
+                        <div class="col-3 text-end p-0">
+                            <img id="HoopsRatingIcon" class="img-fluid col-4" src="https://trackercdn.com/cdn/tracker.gg/rocket-league/ranks/s4-0.png">
+                            <span id="HoopsTierDiv" class="fs-6 text-warning me-1">0-0</span>
+                        </div>
+                        <div class="col-3 text-end p-0">
+                            <span id="HoopsMMR" class="badge bg-secondary">
+                                0000
+                            </span>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item bg-dark text-light fs-5 fw-bold text-nowrap">
+                    <div class="row px-2">
+                        <div class="col-6 p-0">
+                            Dropshot
+                        </div>
+                        <div class="col-3 text-end p-0">
+                            <img id="DropshotRatingIcon" class="img-fluid col-4" src="https://trackercdn.com/cdn/tracker.gg/rocket-league/ranks/s4-0.png">
+                            <span id="DropshotTierDiv" class="fs-6 text-warning me-1">0-0</span>
+                        </div>
+                        <div class="col-3 text-end p-0">
+                            <span id="DropshotMMR" class="badge bg-secondary">
+                                0000
+                            </span>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item bg-dark text-light fs-5 fw-bold text-nowrap">
+                    <div class="row px-2">
+                        <div class="col-6 p-0">
+                            Snowday
+                        </div>
+                        <div class="col-3 text-end p-0">
+                            <img id="SnowdayRatingIcon" class="img-fluid col-4" src="https://trackercdn.com/cdn/tracker.gg/rocket-league/ranks/s4-0.png">
+                            <span id="SnowdayTierDiv" class="fs-6 text-warning me-1">0-0</span>
+                        </div>
+                        <div class="col-3 text-end p-0">
+                            <span id="SnowdayMMR" class="badge bg-secondary">
+                                0000
+                            </span>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item bg-dark text-light fs-5 fw-bold text-nowrap">
+                    <div class="row px-2">
+                        <div class="col-6 p-0">
+                            Casual
+                        </div>
+                        <div class="col-6 text-end p-0">
+                            <span id="CasualMMR" class="badge bg-secondary">
+                                0000
+                            </span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        const data = {};
+
+        window.onload = (e) => {
+            document.getElementById("playerName").innerText = data.data.platformInfo.platformUserHandle;
+
+            document.getElementById("lastUpdated").innerText = new Date(data.data.metadata.lastUpdated.value).toLocaleString([], { dateStyle: 'short', timeStyle: 'short' });
+
+            const playlists = data.data.segments.filter((seg) => seg.type == "playlist");
+            const peakRatings = data.data.segments.filter((seg) => seg.type == "peak-rating");
+            const overview = data.data.segments.filter((seg) => seg.type == "overview");
+
+            const threesData = playlists.filter((seg) => seg.metadata.name == "Ranked Standard 3v3")[0];
+            const threesTier = threesData.stats.tier.value % 3 ? threesData.stats.tier.value % 3 : 3;
+            document.getElementById("3sRatingIcon").src = threesData.stats.rating.metadata.iconUrl;
+            document.getElementById("3sTierDiv").innerText = threesTier + "-" + (threesData.stats.division.value + 1);
+            document.getElementById("3sMMR").innerText = threesData.stats.rating.value;
+
+            const twosData = playlists.filter((seg) => seg.metadata.name == "Ranked Doubles 2v2")[0];
+            const twosTier = twosData.stats.tier.value % 3 ? twosData.stats.tier.value % 3 : 3;
+            document.getElementById("2sRatingIcon").src = twosData.stats.rating.metadata.iconUrl;
+            document.getElementById("2sTierDiv").innerText = twosTier + "-" + (twosData.stats.division.value + 1);
+            document.getElementById("2sMMR").innerText = twosData.stats.rating.value;
+
+            const onesData = playlists.filter((seg) => seg.metadata.name == "Ranked Duel 1v1")[0];
+            const onesTier = onesData.stats.tier.value % 3 ? onesData.stats.tier.value % 3 : 3;
+            document.getElementById("1sRatingIcon").src = onesData.stats.rating.metadata.iconUrl;
+            document.getElementById("1sTierDiv").innerText = onesTier + "-" + (onesData.stats.division.value + 1);
+            document.getElementById("1sMMR").innerText = onesData.stats.rating.value;
+
+            const rumbleData = playlists.filter((seg) => seg.metadata.name == "Rumble")[0];
+            const rumbleTier = rumbleData.stats.tier.value % 3 ? rumbleData.stats.tier.value % 3 : 3;
+            document.getElementById("RumbleRatingIcon").src = rumbleData.stats.rating.metadata.iconUrl;
+            document.getElementById("RumbleTierDiv").innerText = rumbleTier + "-" + (rumbleData.stats.division.value + 1);
+            document.getElementById("RumbleMMR").innerText = rumbleData.stats.rating.value;
+
+            const hoopsData = playlists.filter((seg) => seg.metadata.name == "Hoops")[0];
+            const hoopsTier = hoopsData.stats.tier.value % 3 ? hoopsData.stats.tier.value % 3 : 3;
+            document.getElementById("HoopsRatingIcon").src = hoopsData.stats.rating.metadata.iconUrl;
+            document.getElementById("HoopsTierDiv").innerText = hoopsTier + "-" + (hoopsData.stats.division.value + 1);
+            document.getElementById("HoopsMMR").innerText = hoopsData.stats.rating.value;
+
+            const dropshotData = playlists.filter((seg) => seg.metadata.name == "Dropshot")[0];
+            const dropshotTier = dropshotData.stats.tier.value % 3 ? dropshotData.stats.tier.value % 3 : 3;
+            document.getElementById("DropshotRatingIcon").src = dropshotData.stats.rating.metadata.iconUrl;
+            document.getElementById("DropshotTierDiv").innerText = dropshotTier + "-" + (dropshotData.stats.division.value + 1);
+            document.getElementById("DropshotMMR").innerText = dropshotData.stats.rating.value;
+
+            const snowdayData = playlists.filter((seg) => seg.metadata.name == "Snowday")[0];
+            const snowdayTier = snowdayData.stats.tier.value % 3 ? snowdayData.stats.tier.value % 3 : 3;
+            document.getElementById("SnowdayRatingIcon").src = snowdayData.stats.rating.metadata.iconUrl;
+            document.getElementById("SnowdayTierDiv").innerText = snowdayTier + "-" + (snowdayData.stats.division.value + 1);
+            document.getElementById("SnowdayMMR").innerText = snowdayData.stats.rating.value;
+
+            const casualData = playlists.filter((seg) => seg.metadata.name == "Casual")[0];
+            document.getElementById("CasualMMR").innerText = casualData.stats.rating.value;
+        }
+    </script>
+</body>
+
+</html>
