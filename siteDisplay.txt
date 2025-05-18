@@ -19,179 +19,324 @@
         <div class="row px-2">
             <div class="col-10">
                 <!-- Profile nav -->
-                <ul class="nav nav-underline mb-2" id="profileNav" role="tablist">
+                <ul class="nav nav-underline" id="profileNav" role="tablist">
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link text-info active" id="JW-tab" data-bs-toggle="tab" data-bs-target="#JW-tab-pane"
-                            type="button" role="tab">Jonny10128</button>
+                        <button class="nav-link text-info fs-5 active" id="JW-tab" data-bs-toggle="tab" data-bs-target="#JW-tab-pane"
+                            type="button" role="tab" onclick="switchPlayer('JW-tab-pane')">Jonny10128</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link text-info" id="DW-tab" data-bs-toggle="tab" data-bs-target="#DW-tab-pane" type="button"
-                            role="tab">DWilk96</button>
+                        <button class="nav-link text-info fs-5" id="DW-tab" data-bs-toggle="tab" data-bs-target="#DW-tab-pane" type="button"
+                            role="tab" onclick="switchPlayer('DW-tab-pane')">DWilk96</button>
                     </li>
                 </ul>
             </div>
-            <div class="col-2">
+            <div class="col-2 text-end">
                 <!-- Refresh button -->
                 <a id="refresh" class="btn btn-outline-secondary mt-2" href="shortcuts://run-shortcut?name=RL%20Tracker">
                     <i id="refreshSpinner" class="fa-sharp fa-solid fa-rotate-right text-light"></i>
                 </a>
             </div>
+            <div class="col-12">
+                <hr class="text-light mb-0">
+            </div>
+            <div class="col-12">
+                <ul class="nav nav-underline mb-2" id="profileViewNav" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="playlistsTab nav-link text-light fs-5 active" data-bs-toggle="tab"
+                            type="button" role="tab" onclick="switchView('playlistsView')">Playlists</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="lifetimeTab nav-link text-light fs-5" data-bs-toggle="tab"
+                            type="button" role="tab" onclick="switchView('lifetimeView')">Lifetime</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="historyTab nav-link text-secondary fs-5" data-bs-toggle="tab"
+                            type="button" role="tab" onclick="switchView('historyView')" disabled="true">Match History</button>
+                    </li>
+                </ul>
+            </div>
 
             <!-- Profile tab panes -->
             <div class="tab-content" id="profileNavContent">
                 <div class="tab-pane show active" id="JW-tab-pane" role="tabpanel" tabindex="0">
+
                     <!-- Last updated -->
-                    <i class="text-light">Last Updated: </i><i class="lastUpdated text-light">00/00/00, 00:00 AM</i>
-                    <!-- Playlist ranks -->
-                    <ul class="list-group col-12 mt-2 p-0">
-                        <li class="list-group-item bg-dark text-light fs-5 fw-bold text-nowrap">
-                            <div class="row px-2">
-                                <div class="col-6 p-0">
-                                    Ranked 3v3
-                                </div>
-                                <div class="col-3 text-end p-0">
-                                    <img class="ThreesRatingIcon img-fluid col-4"
-                                        src="https://trackercdn.com/cdn/tracker.gg/rocket-league/ranks/s4-0.png">
-                                    <span class="ThreesTierDiv fs-6 text-warning me-1">0-0</span>
-                                </div>
-                                <div class="col-3 text-end p-0">
-                                    <span class="ThreesMMR badge bg-secondary">
-                                        0000
-                                    </span>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list-group-item bg-dark text-light fs-5 fw-bold text-nowrap">
-                            <div class="row px-2">
-                                <div class="col-6 p-0">
-                                    Ranked 2v2
-                                </div>
-                                <div class="col-3 text-end p-0">
-                                    <img class="TwosRatingIcon img-fluid col-4"
-                                        src="https://trackercdn.com/cdn/tracker.gg/rocket-league/ranks/s4-0.png">
-                                    <span class="TwosTierDiv fs-6 text-warning me-1">0-0</span>
-                                </div>
-                                <div class="col-3 text-end p-0">
-                                    <span class="TwosMMR badge bg-secondary">
-                                        0000
-                                    </span>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list-group-item bg-dark text-light fs-5 fw-bold text-nowrap">
-                            <div class="row px-2">
-                                <div class="col-6 p-0">
-                                    Ranked 1v1
-                                </div>
-                                <div class="col-3 text-end p-0">
-                                    <img class="OnesRatingIcon img-fluid col-4"
-                                        src="https://trackercdn.com/cdn/tracker.gg/rocket-league/ranks/s4-0.png">
-                                    <span class="OnesTierDiv fs-6 text-warning me-1">0-0</span>
-                                </div>
-                                <div class="col-3 text-end p-0">
-                                    <span class="OnesMMR badge bg-secondary">
-                                        0000
-                                    </span>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list-group-item bg-dark text-light fs-5 fw-bold text-nowrap">
-                            <div class="row px-2">
-                                <div class="col-6 p-0">
-                                    Rumble
-                                </div>
-                                <div class="col-3 text-end p-0">
-                                    <img class="RumbleRatingIcon img-fluid col-4"
-                                        src="https://trackercdn.com/cdn/tracker.gg/rocket-league/ranks/s4-0.png">
-                                    <span class="RumbleTierDiv fs-6 text-warning me-1">0-0</span>
-                                </div>
-                                <div class="col-3 text-end p-0">
-                                    <span class="RumbleMMR badge bg-secondary">
-                                        0000
-                                    </span>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list-group-item bg-dark text-light fs-5 fw-bold text-nowrap">
-                            <div class="row px-2">
-                                <div class="col-6 p-0">
-                                    Hoops
-                                </div>
-                                <div class="col-3 text-end p-0">
-                                    <img class="HoopsRatingIcon img-fluid col-4"
-                                        src="https://trackercdn.com/cdn/tracker.gg/rocket-league/ranks/s4-0.png">
-                                    <span class="HoopsTierDiv fs-6 text-warning me-1">0-0</span>
-                                </div>
-                                <div class="col-3 text-end p-0">
-                                    <span class="HoopsMMR badge bg-secondary">
-                                        0000
-                                    </span>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list-group-item bg-dark text-light fs-5 fw-bold text-nowrap">
-                            <div class="row px-2">
-                                <div class="col-6 p-0">
-                                    Dropshot
-                                </div>
-                                <div class="col-3 text-end p-0">
-                                    <img class="DropshotRatingIcon img-fluid col-4"
-                                        src="https://trackercdn.com/cdn/tracker.gg/rocket-league/ranks/s4-0.png">
-                                    <span class="DropshotTierDiv fs-6 text-warning me-1">0-0</span>
-                                </div>
-                                <div class="col-3 text-end p-0">
-                                    <span class="DropshotMMR badge bg-secondary">
-                                        0000
-                                    </span>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list-group-item bg-dark text-light fs-5 fw-bold text-nowrap">
-                            <div class="row px-2">
-                                <div class="col-6 p-0">
-                                    Snowday
-                                </div>
-                                <div class="col-3 text-end p-0">
-                                    <img class="SnowdayRatingIcon img-fluid col-4"
-                                        src="https://trackercdn.com/cdn/tracker.gg/rocket-league/ranks/s4-0.png">
-                                    <span class="SnowdayTierDiv fs-6 text-warning me-1">0-0</span>
-                                </div>
-                                <div class="col-3 text-end p-0">
-                                    <span class="SnowdayMMR badge bg-secondary">
-                                        0000
-                                    </span>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list-group-item bg-dark text-light fs-5 fw-bold text-nowrap">
-                            <div class="row px-2">
-                                <div class="col-6 p-0">
-                                    Casual
-                                </div>
-                                <div class="col-6 text-end p-0">
-                                    <span class="CasualMMR badge bg-secondary">
-                                        0000
-                                    </span>
-                                </div>
-                            </div>
-                        </li>
-                        <!-- <li class="list-group-item bg-dark text-light fs-5 fw-bold text-nowrap">
-                            <div class="row px-2">
-                                <div class="col-6 p-0">
-                                    Tournaments
-                                </div>
-                                <div class="col-3 text-end p-0">
-                                    <img class="TournamentsRatingIcon img-fluid col-4" src="https://trackercdn.com/cdn/tracker.gg/rocket-league/ranks/s4-0.png">
-                                    <span class="TournamentsTierDiv fs-6 text-warning me-1">0-0</span>
-                                </div>
-                                <div class="col-3 text-end p-0">
-                                    <span class="TournamentsMMR badge bg-secondary">
-                                        0000
-                                    </span>
-                                </div>
-                            </div>
-                        </li> -->
-                    </ul>
+                    <i class="text-white-50">Last Updated: </i><i class="lastUpdated text-white-50">00/00/00, 00:00 AM</i>
+
+                    <div class="viewNavContent tab-content">
+                        <div class="playlistsView tab-pane show active" role="tabpanel" tabindex="0">
+                            <!-- Playlist stats -->
+                            <ul class="list-group col-12 mt-2 p-0">
+
+                                <!-- Ranked 3v3 -->
+                                <li class="list-group-item bg-dark border-secondary fw-bold text-nowrap">
+                                    <div class="row px-2">
+                                        <div class="col-6 text-light p-0">
+                                            Ranked 3v3
+                                        </div>
+                                        <div class="col-3 text-end p-0">
+                                            <img class="ThreesCurrRatingIcon img-fluid col-4"
+                                                src="https://trackercdn.com/cdn/tracker.gg/rocket-league/ranks/s4-0.png">
+                                            <span class="ThreesCurrTierDiv fs-6 text-warning align-middle me-1">0-0</span>
+                                        </div>
+                                        <div class="col-3 text-end p-0">
+                                            <span class="ThreesCurrMMR badge bg-secondary">
+                                                0000
+                                            </span>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <!-- Ranked 2v2 -->
+                                <li class="list-group-item bg-dark border-secondary fw-bold text-nowrap">
+                                    <div class="row px-2">
+                                        <div class="col-6 text-light p-0">
+                                            Ranked 2v2
+                                        </div>
+                                        <div class="col-3 text-end p-0">
+                                            <img class="TwosCurrRatingIcon img-fluid col-4"
+                                                src="https://trackercdn.com/cdn/tracker.gg/rocket-league/ranks/s4-0.png">
+                                            <span class="TwosCurrTierDiv fs-6 text-warning align-middle me-1">0-0</span>
+                                        </div>
+                                        <div class="col-3 text-end p-0">
+                                            <span class="TwosCurrMMR badge bg-secondary">
+                                                0000
+                                            </span>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <!-- Ranked 1v1 -->
+                                <li class="list-group-item bg-dark border-secondary fw-bold text-nowrap">
+                                    <div class="row px-2">
+                                        <div class="col-6 text-light p-0">
+                                            Ranked 1v1
+                                        </div>
+                                        <div class="col-3 text-end p-0">
+                                            <img class="OnesCurrRatingIcon img-fluid col-4"
+                                                src="https://trackercdn.com/cdn/tracker.gg/rocket-league/ranks/s4-0.png">
+                                            <span class="OnesCurrTierDiv fs-6 text-warning align-middle me-1">0-0</span>
+                                        </div>
+                                        <div class="col-3 text-end p-0">
+                                            <span class="OnesCurrMMR badge bg-secondary">
+                                                0000
+                                            </span>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <!-- Rumble -->
+                                <li class="list-group-item bg-dark border-secondary fw-bold text-nowrap">
+                                    <div class="row px-2">
+                                        <div class="col-6 text-light p-0">
+                                            Rumble
+                                        </div>
+                                        <div class="col-3 text-end p-0">
+                                            <img class="RumbleCurrRatingIcon img-fluid col-4"
+                                                src="https://trackercdn.com/cdn/tracker.gg/rocket-league/ranks/s4-0.png">
+                                            <span class="RumbleCurrTierDiv fs-6 text-warning align-middle me-1">0-0</span>
+                                        </div>
+                                        <div class="col-3 text-end p-0">
+                                            <span class="RumbleCurrMMR badge bg-secondary">
+                                                0000
+                                            </span>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <!-- Hoops -->
+                                <li class="list-group-item bg-dark border-secondary fw-bold text-nowrap">
+                                    <div class="row px-2">
+                                        <div class="col-6 text-light p-0">
+                                            Hoops
+                                        </div>
+                                        <div class="col-3 text-end p-0">
+                                            <img class="HoopsCurrRatingIcon img-fluid col-4"
+                                                src="https://trackercdn.com/cdn/tracker.gg/rocket-league/ranks/s4-0.png">
+                                            <span class="HoopsCurrTierDiv fs-6 text-warning align-middle me-1">0-0</span>
+                                        </div>
+                                        <div class="col-3 text-end p-0">
+                                            <span class="HoopsCurrMMR badge bg-secondary">
+                                                0000
+                                            </span>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <!-- Dropshot -->
+                                <li class="list-group-item bg-dark border-secondary fw-bold text-nowrap">
+                                    <div class="row px-2">
+                                        <div class="col-6 text-light p-0">
+                                            Dropshot
+                                        </div>
+                                        <div class="col-3 text-end p-0">
+                                            <img class="DropshotCurrRatingIcon img-fluid col-4"
+                                                src="https://trackercdn.com/cdn/tracker.gg/rocket-league/ranks/s4-0.png">
+                                            <span class="DropshotCurrTierDiv fs-6 text-warning align-middle me-1">0-0</span>
+                                        </div>
+                                        <div class="col-3 text-end p-0">
+                                            <span class="DropshotCurrMMR badge bg-secondary">
+                                                0000
+                                            </span>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <!-- Snowday -->
+                                <li class="list-group-item bg-dark border-secondary fw-bold text-nowrap">
+                                    <div class="row px-2">
+                                        <div class="col-6 text-light p-0">
+                                            Snowday
+                                        </div>
+                                        <div class="col-3 text-end p-0">
+                                            <img class="SnowdayCurrRatingIcon img-fluid col-4"
+                                                src="https://trackercdn.com/cdn/tracker.gg/rocket-league/ranks/s4-0.png">
+                                            <span class="SnowdayCurrTierDiv fs-6 text-warning align-middle me-1">0-0</span>
+                                        </div>
+                                        <div class="col-3 text-end p-0">
+                                            <span class="SnowdayCurrMMR badge bg-secondary">
+                                                0000
+                                            </span>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <!-- Casual -->
+                                <li class="list-group-item bg-dark border-secondary fw-bold text-nowrap">
+                                    <div class="row px-2">
+                                        <div class="col-6 text-light p-0">
+                                            Casual
+                                        </div>
+                                        <div class="col-6 text-end p-0">
+                                            <span class="CasualCurrMMR badge bg-secondary">
+                                                0000
+                                            </span>
+                                        </div>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <div class="lifetimeView tab-pane" role="tabpanel" tabindex="0">
+                            <!-- Lifetime stats -->
+                            <ul class="list-group col-12 mt-2 p-0">
+
+                                <!-- Season Reward Level -->
+                                <li class="list-group-item bg-dark border-secondary fw-bold text-nowrap">
+                                    <div class="row px-2">
+                                        <div class="col-6 text-light p-0">
+                                            Season Reward Level
+                                        </div>
+                                        <div class="col-6 text-end p-0">
+                                            <img class="SRL col-2 img-fluid" src="https://trackercdn.com/cdn/tracker.gg/rocket-league/ranks/s4-0.png">
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <!-- Wins -->
+                                <li class="list-group-item bg-dark border-secondary fw-bold text-nowrap">
+                                    <div class="row px-2">
+                                        <div class="col-6 text-light p-0">
+                                            Wins
+                                        </div>
+                                        <div class="col-6 text-end p-0">
+                                            <span class="Wins badge bg-secondary">
+                                                ----
+                                            </span>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <!-- MVPs -->
+                                <li class="list-group-item bg-dark border-secondary fw-bold text-nowrap">
+                                    <div class="row px-2">
+                                        <div class="col-6 text-light p-0">
+                                            MVPs
+                                        </div>
+                                        <div class="col-6 text-end p-0">
+                                            <span class="MVPs badge bg-secondary">
+                                                ----
+                                            </span>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <!-- Goals -->
+                                <li class="list-group-item bg-dark border-secondary fw-bold text-nowrap">
+                                    <div class="row px-2">
+                                        <div class="col-6 text-light p-0">
+                                            Goals
+                                        </div>
+                                        <div class="col-6 text-end p-0">
+                                            <span class="Goals badge bg-secondary">
+                                                ----
+                                            </span>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <!-- Shots -->
+                                <li class="list-group-item bg-dark border-secondary fw-bold text-nowrap">
+                                    <div class="row px-2">
+                                        <div class="col-6 text-light p-0">
+                                            Shots
+                                        </div>
+                                        <div class="col-6 text-end p-0">
+                                            <span class="Shots badge bg-secondary">
+                                                ----
+                                            </span>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <!-- Goal Shot Ratio -->
+                                <li class="list-group-item bg-dark border-secondary fw-bold text-nowrap">
+                                    <div class="row px-2">
+                                        <div class="col-6 text-light p-0">
+                                            Goal Shot Ratio
+                                        </div>
+                                        <div class="col-6 text-end p-0">
+                                            <span class="GSR badge bg-secondary">
+                                                ----
+                                            </span>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <!-- Assists -->
+                                <li class="list-group-item bg-dark border-secondary fw-bold text-nowrap">
+                                    <div class="row px-2">
+                                        <div class="col-6 text-light p-0">
+                                            Assists
+                                        </div>
+                                        <div class="col-6 text-end p-0">
+                                            <span class="Assists badge bg-secondary">
+                                                ----
+                                            </span>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <!-- Saves -->
+                                <li class="list-group-item bg-dark border-secondary fw-bold text-nowrap">
+                                    <div class="row px-2">
+                                        <div class="col-6 text-light p-0">
+                                            Saves
+                                        </div>
+                                        <div class="col-6 text-end p-0">
+                                            <span class="Saves badge bg-secondary">
+                                                ----
+                                            </span>
+                                        </div>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <div class="historyView tab-pane" role="tabpanel" tabindex="0">
+                        </div>
+                    </div>
+
                 </div>
                 <div class="tab-pane" id="DW-tab-pane" role="tabpanel" tabindex="0"></div>
             </div>
@@ -203,45 +348,67 @@
         const JWdata = {};
         const DWdata = {};
 
+        const switchTab = true;
+
+        let activePlayer = "JW-tab-pane";
+        let activeView = "playlistsView";
+
         window.onload = (e) => {
             document.getElementById("DW-tab-pane").innerHTML = document.getElementById("JW-tab-pane").innerHTML;
 
-            const JWplaylists = JWdata.data.segments.filter((seg) => seg.type == "playlist");
-            const JWpeakRatings = JWdata.data.segments.filter((seg) => seg.type == "peak-rating");
-            const JWoverview = JWdata.data.segments.filter((seg) => seg.type == "overview");
+            if (switchTab) {
+                const profileNav = document.getElementById("profileNav");
+                profileNav.append(...Array.from(profileNav.childNodes).reverse());
+                document.getElementById("DW-tab").click();
+            }
 
-            document.querySelector("#JW-tab-pane .lastUpdated").innerText = new Date(JWdata.data.metadata.lastUpdated.value).toLocaleString([], { dateStyle: 'short', timeStyle: 'short' });
-            updatePlaylistStats("JW", "Threes", JWplaylists.filter((seg) => seg.metadata.name == "Ranked Standard 3v3")[0]);
-            updatePlaylistStats("JW", "Twos", JWplaylists.filter((seg) => seg.metadata.name == "Ranked Doubles 2v2")[0]);
-            updatePlaylistStats("JW", "Ones", JWplaylists.filter((seg) => seg.metadata.name == "Ranked Duel 1v1")[0]);
-            updatePlaylistStats("JW", "Rumble", JWplaylists.filter((seg) => seg.metadata.name == "Rumble")[0]);
-            updatePlaylistStats("JW", "Hoops", JWplaylists.filter((seg) => seg.metadata.name == "Hoops")[0]);
-            updatePlaylistStats("JW", "Dropshot", JWplaylists.filter((seg) => seg.metadata.name == "Dropshot")[0]);
-            updatePlaylistStats("JW", "Snowday", JWplaylists.filter((seg) => seg.metadata.name == "Snowday")[0]);
-            document.querySelector("#JW-tab-pane .CasualMMR").innerText = JWplaylists.filter((seg) => seg.metadata.name == "Casual")[0].stats.rating.value;
-            // updatePlaylistStats("JW", "Tournaments", JWplaylists.filter((seg) => seg.metadata.name == "Tournament Matches")[0]);
-
-            const DWplaylists = DWdata.data.segments.filter((seg) => seg.type == "playlist");
-            const DWpeakRatings = DWdata.data.segments.filter((seg) => seg.type == "peak-rating");
-            const DWoverview = DWdata.data.segments.filter((seg) => seg.type == "overview");
-
-            document.querySelector("#DW-tab-pane .lastUpdated").innerText = new Date(DWdata.data.metadata.lastUpdated.value).toLocaleString([], { dateStyle: 'short', timeStyle: 'short' });
-            updatePlaylistStats("DW", "Threes", DWplaylists.filter((seg) => seg.metadata.name == "Ranked Standard 3v3")[0]);
-            updatePlaylistStats("DW", "Twos", DWplaylists.filter((seg) => seg.metadata.name == "Ranked Doubles 2v2")[0]);
-            updatePlaylistStats("DW", "Ones", DWplaylists.filter((seg) => seg.metadata.name == "Ranked Duel 1v1")[0]);
-            updatePlaylistStats("DW", "Rumble", DWplaylists.filter((seg) => seg.metadata.name == "Rumble")[0]);
-            updatePlaylistStats("DW", "Hoops", DWplaylists.filter((seg) => seg.metadata.name == "Hoops")[0]);
-            updatePlaylistStats("DW", "Dropshot", DWplaylists.filter((seg) => seg.metadata.name == "Dropshot")[0]);
-            updatePlaylistStats("DW", "Snowday", DWplaylists.filter((seg) => seg.metadata.name == "Snowday")[0]);
-            document.querySelector("#DW-tab-pane .CasualMMR").innerText = DWplaylists.filter((seg) => seg.metadata.name == "Casual")[0].stats.rating.value;
-            // updatePlaylistStats("DW", "Tournaments", DWplaylists.filter((seg) => seg.metadata.name == "Tournament Matches")[0]);
+            updatePlayerStats("JW", JWdata);
+            updatePlayerStats("DW", DWdata);
         }
 
-        const updatePlaylistStats = (player, playlistName, playlistData) => {
+        const updatePlaylistView = (player, playlistName, playlistData) => {
             const tier = playlistData.stats.tier.value % 3 ? playlistData.stats.tier.value % 3 : 3;
             document.querySelector(`#${player}-tab-pane .${playlistName}RatingIcon`).src = playlistData.stats.rating.metadata.iconUrl;
             document.querySelector(`#${player}-tab-pane .${playlistName}TierDiv`).innerText = tier + "-" + (playlistData.stats.division.value + 1);
             document.querySelector(`#${player}-tab-pane .${playlistName}MMR`).innerText = playlistData.stats.rating.value;
+        }
+
+        const updatePlayerStats = (player, playerData) => {
+            const playlists = playerData.data.segments.filter((seg) => seg.type == "playlist");
+            const peakRatings = playerData.data.segments.filter((seg) => seg.type == "peak-rating");
+            const overview = playerData.data.segments.filter((seg) => seg.type == "overview")[0];
+
+            document.querySelector(`#${player}-tab-pane .lastUpdated`).innerText = new Date(playerData.data.metadata.lastUpdated.value).toLocaleString([], { dateStyle: 'short', timeStyle: 'short' });
+            updatePlaylistView(player, "ThreesCurr", playlists.filter((seg) => seg.metadata.name == "Ranked Standard 3v3")[0]);
+            updatePlaylistView(player, "TwosCurr", playlists.filter((seg) => seg.metadata.name == "Ranked Doubles 2v2")[0]);
+            updatePlaylistView(player, "OnesCurr", playlists.filter((seg) => seg.metadata.name == "Ranked Duel 1v1")[0]);
+            updatePlaylistView(player, "RumbleCurr", playlists.filter((seg) => seg.metadata.name == "Rumble")[0]);
+            updatePlaylistView(player, "HoopsCurr", playlists.filter((seg) => seg.metadata.name == "Hoops")[0]);
+            updatePlaylistView(player, "DropshotCurr", playlists.filter((seg) => seg.metadata.name == "Dropshot")[0]);
+            updatePlaylistView(player, "SnowdayCurr", playlists.filter((seg) => seg.metadata.name == "Snowday")[0]);
+            document.querySelector(`#${player}-tab-pane .CasualCurrMMR`).innerText = playlists.filter((seg) => seg.metadata.name == "Casual")[0].stats.rating.value;
+            document.querySelector(`#${player}-tab-pane .SRL`).src = overview.stats.seasonRewardLevel.metadata.iconUrl;
+            document.querySelector(`#${player}-tab-pane .Wins`).innerText = overview.stats.wins.value;
+            document.querySelector(`#${player}-tab-pane .MVPs`).innerText = overview.stats.mVPs.value;
+            document.querySelector(`#${player}-tab-pane .Goals`).innerText = overview.stats.goals.value;
+            document.querySelector(`#${player}-tab-pane .Shots`).innerText = overview.stats.shots.value;
+            document.querySelector(`#${player}-tab-pane .GSR`).innerText = overview.stats.goalShotRatio.displayValue + "%";
+            document.querySelector(`#${player}-tab-pane .Assists`).innerText = overview.stats.assists.value;
+            document.querySelector(`#${player}-tab-pane .Saves`).innerText = overview.stats.saves.value;
+        }
+
+        const switchPlayer = (player) => {
+            activePlayer = player;
+        }
+
+        const switchView = (tab) => {
+            activeView = tab;
+            showView();
+        }
+
+        const showView = () => {
+            document.querySelectorAll(".viewNavContent .tab-pane.active").forEach(tabPane => tabPane.classList.remove("show", "active"));
+            document.querySelectorAll(`.viewNavContent .${activeView}`).forEach(tabPane => tabPane.classList.add("show", "active"));
         }
     </script>
 </body>
