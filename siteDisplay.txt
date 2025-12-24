@@ -348,7 +348,7 @@
             <div class="modal-content bg-dark">
                 <div class="modal-body">
                     <form action="shortcuts://run-shortcut">
-                        <input type="hidden" name="name" value="">
+                        <input type="hidden" name="name" value="RL Tracker">
                         <input type="hidden" name="input" value="text">
                         <div class="input-group">
                             <div class="form-floating">
