@@ -347,12 +347,10 @@
         <div class="modal-dialog mt-3">
             <div class="modal-content bg-dark">
                 <div class="modal-body">
-                    <form action="shortcuts://run-shortcut">
-                        <input type="hidden" name="name" value="RL%20Tracker">
-                        <input type="hidden" name="input" value="text">
+                    <form id="searchForm">
                         <div class="input-group">
                             <div class="form-floating">
-                                <input type="text" id="search" name="text" class="form-control text-light bg-dark border-secondary border-end-0" role="search" placeholder="Username" autocomplete="off" required>
+                                <input type="text" id="searchInput" name="text" class="form-control text-light bg-dark border-secondary border-end-0" role="search" placeholder="Username" autocomplete="off" required>
                                 <label class="text-info" for="search">Username</label>
                             </div>
 
@@ -405,6 +403,16 @@
             document.querySelector("#profileNav .nav-item:first-of-type .nav-link")?.click();
 
             document.getElementById("searchModal").addEventListener('shown.bs.modal', () => setTimeout(() => document.getElementById("search").focus(), 100));
+
+            document.getElementById("searchForm").addEventListener("submit", (e) => {
+                e.preventDefault();
+                const searchInput = document.getElementById("searchInput");
+                const searchValue = searchInput.value;
+                bootstrap.Modal.getInstance(document.getElementById("searchModal")).hide();
+                searchInput.value = "";
+                // console.log(`shortcuts://run-shortcut?name=RL%20Tracker&input=text&text=${encodeURIComponent(searchValue)}`);
+                window.open(`shortcuts://run-shortcut?name=RL%20Tracker&input=text&text=${encodeURIComponent(searchValue)}`);
+            });
         }
 
         const showView = (tab) => {
